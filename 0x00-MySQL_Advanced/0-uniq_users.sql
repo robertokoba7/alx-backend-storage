@@ -1,6 +1,7 @@
 --SQL script that creates a table `users`
-CREATE TABLE if NOT EXISTS `users` (
-	`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`email` VARCHAR(255) NOT NULL UNIQUE,
-	`name` VARCHAR(255)
+
+CREATE TABLE if NOT EXISTS users (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(255) NOT NULL UNIQUE,
+	name VARCHAR(255)
 );
