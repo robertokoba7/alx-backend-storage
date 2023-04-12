@@ -45,7 +45,7 @@ def replay(fn: Callable):
     except Exception:
         count = 0
     print(f'{function_name} was called {count} times:')
-    inputs = r.lrange(f"{function_name}:inputs", 0,-1)
+    inputs = r.lrange(f"{function_name}:inputs", 0, -1)
     outputs = r.lrange(f"{function_name}:outputs", 0, -1)
     for one, two in zip(inputs, outputs):
         try:
