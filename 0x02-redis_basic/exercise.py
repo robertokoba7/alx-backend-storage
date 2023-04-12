@@ -26,7 +26,7 @@ def call_history(method: Callable) -> Callable:
     @wraps(method)
     def wrapped(self, *args, **kwargs):
         """Additonal function behaviour to count_call"""
-        input = str(args)
+        inputs = str(args)
         self._redis.rpush(method.__qualname__ + ":inputs", inputs)
         output = str(method(self, *args, **kwargs))
         self._redis.rpush(method.__qualname__ + ":outputs", output)
@@ -43,7 +43,7 @@ def replay(fn: Callable):
         count = int(count.decode("utf-8"))
     except Exception:
         count = 0
-    print(f'{functio_name} was called {count} times:')
+    print(f'{function_name} was called {count} times:')
     inputs = r.lrange(f"{function_name}:inputs", 0,-1)
     outputs = r.lrange(f"{function_name}:outputs", 0, -1)
     for one, two in zip(inputs, outputs):
