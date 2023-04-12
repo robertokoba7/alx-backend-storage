@@ -7,7 +7,7 @@ from functools import wraps
 
 
 class Cache:
-        """Use of redis to cache frequently accesses data"""
+    """Use of redis to cache frequently accesses data"""
     def __init__(self):
         """Create an instance of Redis client and store it in a privatevariablenamed _redis"""
         self._redis = redis.Redis()
