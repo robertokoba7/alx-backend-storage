@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """write strings to Redis"""
+
+
 import redis
 from uuid import uuid4
 from typing import Union, Callable, Optional
@@ -20,6 +22,7 @@ def count_calls(method: Callable) -> Callable:
     
 def call_history(method: Callable) -> Callable:
     """inputs and outputs storage"""
+    
     @wraps(method)
     def wrapped(self, *args, **kwargs):
         """Additonal function behaviour to count_call"""
@@ -96,4 +99,3 @@ class Cache:
         except Exception:
             value = 0
         return value
-
