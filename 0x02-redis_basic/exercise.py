@@ -28,9 +28,11 @@ def call_history(method: Callable) -> Callable:
         """Additonal function behaviour to count_call"""
         inputs = str(args)
         self._redis.rpush(method.__qualname__ + ":inputs", inputs)
-        output = str(method(self, *args, **kwargs))
+        output = method(self, *args, **kwargs))
+        output_str = str(output)
         self._redis.rpush(method.__qualname__ + ":outputs", output)
         return output
+
     return wrapped
 
 
