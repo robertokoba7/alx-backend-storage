@@ -19,6 +19,6 @@ class Cache:
         key = str(uuid.uuid4())
 
         """Using the generated key and set(), we store the data in Redis"""
-        self.-redis.set(key, data)
+        self._redis.set(key, data)
         """returns generated key"""
         return key
